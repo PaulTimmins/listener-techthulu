@@ -6,19 +6,41 @@ import urllib.request
 import time
 
 techURL = 'http://localhost:8081/module/status/json'
+pollInterval = 10
+
+def makeblue():
+     print("portal is blue")
+
+def makegreen():
+     print("portal is green")
+
+def makegray():
+     print("portal is gray")
 
 def techthulu():
     try:
+       print("retrieving from techthulu "+techURL)
        jsondata = urllib.request.urlopen(techURL).read().decode('utf-8')
        portalstate = json.loads(jsondata)
        if (portalstate['status']['controllingFaction'] == "0"):
-            print("portal is neutral, do neutral stuff\n")
+            makegray() 
        if (portalstate['status']['controllingFaction'] == "1"):
-            print("portal is ENL, do green stuff\n")
+            makegreen()
        if (portalstate['status']['controllingFaction'] == "2"):
-            print("portal is RES, do blue stuff\n")
+            makeblue()
+       print("retrieval complete")
     except:
-       print("retrieval from techthulu failed\n")
+       print("retrieval from techthulu failed")
+
+def forceblue():
+     makeblue()    
+
+def forcegreen():
+     makegreen()
+
+def forceneutral():
+     makegray()
+
 
 def main():
      try:
@@ -28,10 +50,18 @@ def main():
           controldata=''
 
      while (not controldata=='exit'):
-          print(controldata+"\n")
+          print(controldata)
           if (controldata == 'tech'):
                techthulu()
-          time.sleep(10)
+          if (controldata == 'forceblue'):
+               forceblue()
+          if (controldata == 'forcegreen'):
+               forcegreen()
+          if (controldata == 'forceneutral'):
+               forceneutral()
+
+          print("sleeping for "+str(pollInterval)+" seconds\n")
+          time.sleep(int(pollInterval))
           try:
                controlfile = open('/tmp/controlfile',mode="rt")
                controldata = controlfile.readline().rstrip("\n")
