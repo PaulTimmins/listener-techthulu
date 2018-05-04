@@ -4,17 +4,31 @@ import json
 import sys
 import urllib.request
 import time
+import random
+from gpiozero import LED
+from time import sleep
 
-techURL = 'http://localhost:8081/module/status/json'
+
+
+#techURL = 'http://localhost:8081/module/status/json'
+techURL = 'http://192.168.0.199:8081/module/status/json'
 pollInterval = 10
+blueout = LED(2)
+greenout = LED(3)
 
 def makeblue():
+     blueout.on()
+     greenout.off()
      print("portal is blue")
 
 def makegreen():
+     blueout.off()
+     greenout.on()
      print("portal is green")
 
 def makegray():
+     blueout.off()
+     greenout.off()
      print("portal is gray")
 
 def techthulu():
@@ -41,8 +55,16 @@ def forcegreen():
 def forceneutral():
      makegray()
 
+def party():
+     print("party mode!")
+     if (random.randint(1,2) > 1):
+         makegreen()
+     else:
+         makeblue()
+
 
 def main():
+     curstate = "neutral"
      try:
           controlfile = open('/tmp/controlfile',mode="rt")
           controldata = controlfile.readline().rstrip("\n")
@@ -59,6 +81,8 @@ def main():
                forcegreen()
           if (controldata == 'forceneutral'):
                forceneutral()
+          if (controldata == 'party'):
+               party()
 
           print("sleeping for "+str(pollInterval)+" seconds\n")
           time.sleep(int(pollInterval))
