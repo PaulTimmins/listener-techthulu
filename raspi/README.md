@@ -1,9 +1,9 @@
 raspberry pi code
 
 installing:
-apt-get update
-apt-get install git arduino vim python3-serial python3-gpiozero
-git clone https://github.com/PaulTimmins/listener-techthulu.git
+ * apt-get update
+ * apt-get install git arduino vim python3-serial python3-gpiozero
+ * git clone https://github.com/PaulTimmins/listener-techthulu.git
 
 when starting up to add techthulu support do:
 
