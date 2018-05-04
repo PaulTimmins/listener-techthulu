@@ -17,3 +17,4 @@ current support:
  * forceblue - always blue
  * forcegreen - always green
  * forceneutral - always neutral
+ * party - Reach out and touch faith, let RN Jesus take the wheel
