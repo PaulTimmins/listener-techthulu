@@ -60,6 +60,7 @@ def techthulu():
        print("retrieval complete")
     except:
        print("retrieval from techthulu failed")
+       controldata='party'
 
 def forceblue():
      makeblue()    
