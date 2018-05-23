@@ -11,10 +11,25 @@ from time import sleep
 
 
 #techURL = 'http://localhost:8081/module/status/json'
-techURL = 'http://192.168.0.199:8081/module/status/json'
+techURL = 'http://operation-wigwam.ingress.com:8080/v1/test-info'
 pollInterval = 10
 blueout = LED(2)
 greenout = LED(3)
+LED(4).on()
+LED(5).on()
+LED(6).on()
+LED(7).on()
+LED(8).on()
+LED(9).on()
+LED(10).on()
+LED(11).on()
+LED(12).on()
+LED(13).on()
+LED(14).on()
+LED(15).on()
+LED(16).on()
+
+
 
 def makeblue():
      blueout.on()
@@ -36,11 +51,11 @@ def techthulu():
        print("retrieving from techthulu "+techURL)
        jsondata = urllib.request.urlopen(techURL).read().decode('utf-8')
        portalstate = json.loads(jsondata)
-       if (portalstate['status']['controllingFaction'] == "0"):
+       if (portalstate['result']['controllingFaction'] == "Neutral"):
             makegray() 
-       if (portalstate['status']['controllingFaction'] == "1"):
+       if (portalstate['result']['controllingFaction'] == "Enlightened"):
             makegreen()
-       if (portalstate['status']['controllingFaction'] == "2"):
+       if (portalstate['result']['controllingFaction'] == "Resistance"):
             makeblue()
        print("retrieval complete")
     except:
@@ -69,7 +84,7 @@ def main():
           controlfile = open('/tmp/controlfile',mode="rt")
           controldata = controlfile.readline().rstrip("\n")
      except OSError:
-          controldata=''
+          controldata='tech'
 
      while (not controldata=='exit'):
           print(controldata)
@@ -90,7 +105,7 @@ def main():
                controlfile = open('/tmp/controlfile',mode="rt")
                controldata = controlfile.readline().rstrip("\n")
           except OSError:
-               controldata=''
+               controldata='tech'
 
 
 main()
