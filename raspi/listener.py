@@ -83,11 +83,13 @@ def forceneutral():
 
 def party():
      print("party mode!")
-     if (random.randint(1,2) > 1):
+     state = random.randint(0,2)
+     if (state == 2):
          makegreen(random.randint(1,8))
-     else:
+     if (state == 1):
          makeblue(random.randint(1,8))
-
+     if (state == 0):
+         makegray()
 
 def main():
      curstate = "neutral"
