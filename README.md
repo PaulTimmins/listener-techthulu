@@ -20,4 +20,10 @@ you'll get all your JSON data.
 
 * arduino sketch under /arduino/
 
+2019 wiring changes:
+* Outlet CB1 1-1: Blue
+* Outlet CB1 1-2: Green
+* Outlet CB1 2-1: Red
+* Outlet CB1 2-2: Pink
+
 -P
