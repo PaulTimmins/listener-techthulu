@@ -10,15 +10,17 @@ from time import sleep
 
 
 #wigwam is test server, listener.local is onsite techthulu - comment out the local to get the test server
-techURL = 'http://operation-wigwam.ingress.com:8080/v1/test-info'
+#techURL = 'http://operation-wigwam.ingress.com:8080/v1/test-info'
 techURL = 'http://listener.local:8080/v1/info'
 pollInterval = 10
 blueout = LED(2)
 greenout = LED(3)
-LED(4).on()
-LED(5).on()
+redout = LED(4)
+pinkout = LED(5)
+#LED(4).on()
+#LED(5).on()
 LED(6).on()
-LED(7).on()
+#LED(7).on()
 LED(8).on()
 LED(9).on()
 LED(10).on()
@@ -34,6 +36,8 @@ LED(16).on()
 def makeblue(level=8):
      blueout.on()
      greenout.off()
+     redout.on()
+     pinkout.on()
      print("portal is blue")
      statusfile = open('/tmp/statusfile',mode="w") 
      statusfile.write("blue"+str(level)+"\n")
@@ -42,6 +46,8 @@ def makeblue(level=8):
 def makegreen(level=8):
      blueout.off()
      greenout.on()
+     pinkout.on()
+     redout.on()
      print("portal is green")
      statusfile = open('/tmp/statusfile',mode="w")
      statusfile.write("green"+str(level)+"\n")
@@ -50,6 +56,14 @@ def makegreen(level=8):
 def makegray(level=0):
      blueout.off()
      greenout.off()
+     for i in range(5): 
+       pinkout.on()
+       redout.on()
+       time.sleep(int(1))
+       pinkout.off()
+       redout.off()
+       time.sleep(int(1)) 
+
      print("portal is gray")
      statusfile = open('/tmp/statusfile',mode="w")
      statusfile.write("gray\n")
@@ -84,6 +98,7 @@ def forceneutral():
 def party():
      print("party mode!")
      state = random.randint(0,2)
+     print("party mode random state is: "+str(state))
      if (state == 2):
          makegreen(random.randint(1,8))
      if (state == 1):
