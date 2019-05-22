@@ -25,5 +25,12 @@ you'll get all your JSON data.
 * Outlet CB1 1-2: Green
 * Outlet CB1 2-1: Red
 * Outlet CB1 2-2: Pink
+* Outlet CB2 3-1: 120v continuous - program control
+* Outlet CB2 3-2: 120v continuous - program control
+* Outlet CB2 4-1: 120v continuous - program control
+* Outlet CB2 4-2: 120v continuous - program control
+* Outlet CB3 5-1: 120v - wired to 3.3v rail of rpi - stable output once powered
+* Outlet CB3 5-2: 120v - wired to 3.3v rail of rpi - stable output once powered
+* Remaining outlets - state unknown
 
 -P
