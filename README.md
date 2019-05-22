@@ -33,4 +33,8 @@ you'll get all your JSON data.
 * Outlet CB3 5-2: 120v - wired to 3.3v rail of rpi - stable output once powered
 * Remaining outlets - state unknown
 
+Hosts:
+* watchers.local - relaybox/runs this code
+* listener.local - niantic techthulu
+
 -P
